@@ -1,0 +1,4 @@
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+HOME=/
+0 0 * * *	/home/user/linuxtermdrvs/bin/printer/shtrihmfrk/closeday.bash

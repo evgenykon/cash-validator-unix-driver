@@ -1,0 +1,84 @@
+==============================================
+				README FILE
+==============================================
+
+driver:	 	vers 1.0
+created:	2010.07
+author:		Bankomatiqa
+protocol:	FR
+
+
+
+1. SETUP
+
+	make
+	make printer
+	./shtrih-mfk.bin setconfig
+	
+This will set port, speed and timeouts. 
+
+To watch configuration, run 
+	./shtrih-mfk.bin getconfig
+	
+To run selftest, call 
+	./shtrih-mfk.bin test
+
+To read all data from port buffer call
+	./shtrih-mfk.bin read
+This procedure is infinitive, so to stop procedure, press Ctrl+C
+
+To setup device speed, call
+	./shtrih-mfk.bin setupspeed <current> <new>
+	
+To check connect call
+	./shtrih-mfk.bin check
+
+To search communication parameters in automatic mode, call
+	./shtrih-mfk.bin autoconfig
+
+
+
+
+2. USE
+
+Call ./run.bash to execute daemon. If its already 
+started, script return "DONE". If its just started,
+return "RUN". If not then return "FAIL".
+
+When its starts, all commands should be sending throught 
+controller called "printer.bin", which return "TRUE" if
+device make all commands, and "FAIL" if not.
+
+There are 7 commands.
+ 
+1. Test mode. 
+	Call "./printer.bin test", and daemon send to device 
+	command 13h("BEEP"), that you can hear.
+	
+2. Stop mode.
+	Call "./printer.bin stop" to terminate daemon.
+	
+3. Print selftest information.
+	Call "./printer.bin ptest". Device start printing
+	various information by command 19h("TEST").
+
+4. Close day
+	Call "./printer.bin closesmena" to close day and store 
+	report to memory. Command is C6h ("Daily report with 
+	cleaning to buffer"). Need to call every 12:00 a.m.
+
+5. New payment
+	Call "./printer.bin newpayment <price> '<text>'" to 
+	make payment operation.
+	At first, controller sends command 8Dh ("open check").
+	Then 80h ("sale") with information about price and 
+	service name.
+	Then 85h ("close check")
+
+6. Check mode
+	Call "./printer getmode". Return "MODE:<number>" which 
+	indicate FR mode or "FAIL" if error.
+
+7. Incassation
+	Call "./printer incass" to print all Z-reports from 
+	FR buffer. Need to print every 4 days.
