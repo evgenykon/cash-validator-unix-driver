@@ -59,3 +59,6 @@ USAGE:
 	</pre>
 </li>
 </ul>
+
+
+<a href="https://github.com/effus/cash-validator-unix-driver/"><img src="https://img.shields.io/github/license/effus/cash-validator-unix-driver.svg" alt=""></a>
