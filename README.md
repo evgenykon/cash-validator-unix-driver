@@ -1,5 +1,7 @@
 <h1>Linux Payment Terminal Drivers</h1>
 
+_**Sorry, this package is not supported yet**_
+
 Contains:
 <ul>
 <li>Printers:
